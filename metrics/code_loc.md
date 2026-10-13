@@ -8,7 +8,7 @@ Code lines only (no comments or blank lines). Rust lines are classified by Verus
 |:--|--:|--:|--:|--:|--:|--:|
 | BASS | 160 | 0 | 0 | 177 | 0 / 0 / 0 | 0 / 0 / 0 |
 | Open Platform | 488 | 107 | 40 | 168 | 647 / 397 / 15 | 748 / 881 / 1497 |
-| Isolette | 231 | 7 | 3 | 164 | 0 / 0 / 0 | 0 / 0 / 0 |
+| Isolette | 231 | 7 | 3 | 168 | 0 / 0 / 0 | 0 / 0 / 0 |
 | RTS | 195 | 0 | 0 | 44 | 0 / 0 / 0 | 0 / 0 / 0 |
 
 <details>
@@ -35,7 +35,7 @@ Columns, left to right:
 |:--|--:|--:|--:|--:|--:|--:|--:|
 | BASS | 3211 | 177 | 449 | 167 | 0 | 4004 | 0 |
 | Open Platform | 4952 | 168 | 380 | 2352 | 3156 | 11008 | 847 |
-| Isolette | 6813 | 164 | 862 | 268 | 0 | 8107 | 0 |
+| Isolette | 6813 | 168 | 862 | 268 | 0 | 8111 | 0 |
 | RTS | 8632 | 44 | 1334 | 199 | 0 | 10209 | 0 |
 
 <details>
@@ -71,7 +71,7 @@ Columns, left to right:
 | Open Platform | driver | 421 | 0 | 0 | 0 | 46 | 467 |
 | Open Platform | gumbo-library | 278 | 278 | 0 | 0 | 12 | 568 |
 | Open Platform | data | 36 | 0 | 0 | 0 | 13 | 49 |
-| Isolette | component | 2998 | 622 | 48 | 0 | 482 | 4150 |
+| Isolette | component | 2998 | 626 | 48 | 0 | 482 | 4154 |
 | Isolette | gumbo-library | 58 | 53 | 0 | 0 | 12 | 123 |
 | Isolette | data | 104 | 0 | 0 | 0 | 22 | 126 |
 | RTS | component | 4695 | 1029 | 76 | 0 | 814 | 6614 |
@@ -104,7 +104,7 @@ All provenances (generated and developer-written) together; C is not included.
 |:--|--:|--:|--:|--:|--:|--:|--:|
 | BASS | 902 (902) | 395 (25) | 177 (0) | 642 (119) | 0 | 0 | 2116 (1046) |
 | Open Platform | 0; PDF, 7 pages | 446 (111) | 202 (55) | 886 (283) | 139 (139) | 56 (56) | 1729 (644) |
-| Isolette | 0 | 637 (0) | 297 (0) | 799 (115) | 2 (2) | 0 | 1735 (117) |
+| Isolette | 0 | 625 (0) | 297 (0) | 799 (115) | 2 (2) | 0 | 1723 (117) |
 | RTS | 0 | 913 (0) | 448 (0) | 931 (120) | 0 | 0 | 2292 (120) |
 
 <details>
@@ -133,11 +133,6 @@ Each cell is *lines (of which developer-written)*. Lines in HAMR's output direct
 | BASS | test | 2002 | 0 | 135 | 1066 | 3203 | 2460 | 0 | 0 | 743 | 0 | 0 |
 | Open Platform | test | 1782 | 0 | 88 | 0 | 1870 | 1573 | 0 | 0 | 297 | 0 | 0 |
 | Isolette | test | 4319 | 0 | 249 | 654 | 5222 | 4103 | 0 | 0 | 1119 | 0 | 0 |
-| Isolette | observers | 3056 | 0 | 3 | 0 | 3059 | 2878 | 0 | 0 | 166 | 0 | 15 |
-| Isolette | monitor-test-hooks | 585 | 4 | 0 | 0 | 589 | 410 | 4 | 0 | 25 | 150 | 0 |
-| Isolette | system-test | 3528 | 0 | 91 | 113 | 3732 | 1976 | 0 | 0 | 146 | 1041 | 569 |
-| Isolette | system-verification | 17389 | 0 | 3 | 0 | 17392 | 29 | 12892 | 3724 | 660 | 0 | 87 |
-| Isolette | bin | 114 | 0 | 0 | 0 | 114 | 0 | 0 | 0 | 0 | 0 | 114 |
 | RTS | test | 2595 | 0 | 374 | 0 | 2969 | 1808 | 0 | 0 | 1161 | 0 | 0 |
 
 <details>

@@ -81,8 +81,7 @@ CFLAGS += \
 	-I$(TOP_DIR)/components/thermostat_mt_dmf_dmf/include \
 	-I$(TOP_DIR)/components/operator_interface_oip_oit/include \
 	-I$(TOP_DIR)/components/temperature_sensor_cpi_thermostat/include \
-	-I$(TOP_DIR)/components/heat_source_cpi_heat_controller/include \
-	-I$(TOP_DIR)/components/test_controller_process_test_controller_thread/include
+	-I$(TOP_DIR)/components/heat_source_cpi_heat_controller/include
 
 
 UTIL_OBJS :=
@@ -139,8 +138,7 @@ vpath %.c $(SDDF) \
 	$(TOP_DIR)/components/thermostat_mt_dmf_dmf/src \
 	$(TOP_DIR)/components/operator_interface_oip_oit/src \
 	$(TOP_DIR)/components/temperature_sensor_cpi_thermostat/src \
-	$(TOP_DIR)/components/heat_source_cpi_heat_controller/src \
-	$(TOP_DIR)/components/test_controller_process_test_controller_thread/src
+	$(TOP_DIR)/components/heat_source_cpi_heat_controller/src
 
 
 # EXTRA_IMAGES: protection domains only a variant has (the test controller, set by
@@ -208,10 +206,6 @@ thermostat_mt_dmf_dmf_rust:
 # user code
 operator_interface_oip_oit_rust:
 	make -C ${CRATES_DIR}/operator_interface_oip_oit $(RUST_MAKE_TARGET)
-
-# user code
-test_controller_process_test_controller_thread_rust:
-	make -C ${CRATES_DIR}/test_controller $(RUST_MAKE_TARGET)
 
 %.o: %.c ${SDDF}/include
 	${CC} ${CFLAGS} -c -o $@ $<
@@ -294,12 +288,6 @@ heat_source_cpi_heat_controller_MON.elf: heat_source_cpi_heat_controller_MON_use
 heat_source_cpi_heat_controller.elf: $(UTIL_OBJS) heat_source_cpi_heat_controller_user.o heat_source_cpi_heat_controller.o $(TYPES_LIB)
 	$(LD) $(LDFLAGS) $^ $(LIBS) -o $@
 
-test_controller_process_test_controller_thread_MON.elf: test_controller_process_test_controller_thread_MON_user.o test_controller_process_test_controller_thread_MON.o
-	$(LD) $(LDFLAGS) $^ $(LIBS) -o $@
-
-test_controller_process_test_controller_thread.elf: $(UTIL_OBJS) test_controller_process_test_controller_thread_rust test_controller_process_test_controller_thread.o $(TYPES_LIB)
-	$(LD) $(LDFLAGS) -L ${CRATES_DIR}/test_controller/target/aarch64-unknown-none/$(RUST_PROFILE_DIR) $(filter %.o, $^) $(TYPES_LIB) $(LIBS) -ltest_controller -o $@
-
 
 
 $(SYSTEM_FILE): $(IMAGES) $(DTB) ${CHECK_FLAGS_BOARD_MD5}
@@ -346,7 +334,6 @@ clean::
 	make -C ${CRATES_DIR}/thermostat_mt_mmm_mmm clean
 	make -C ${CRATES_DIR}/thermostat_mt_dmf_dmf clean
 	make -C ${CRATES_DIR}/operator_interface_oip_oit clean
-	make -C ${CRATES_DIR}/test_controller clean
 
 verus: 
 	make -C ${CRATES_DIR}/thermostat_rt_mri_mri verus
@@ -358,6 +345,3 @@ verus:
 	make -C ${CRATES_DIR}/thermostat_mt_mmm_mmm verus
 	make -C ${CRATES_DIR}/thermostat_mt_dmf_dmf verus
 	make -C ${CRATES_DIR}/operator_interface_oip_oit verus
-
-verus-sys-proof: 
-	make -C ${CRATES_DIR}/sys_nominal_proof all

@@ -31,14 +31,12 @@ mod logging;
 mod test;
 
 use crate::bridge::thermostat_mt_ma_ma_api::{self as api, *};
-use crate::bridge::extern_c_api;
 use crate::component::thermostat_mt_ma_ma_app::*;
 use data::*;
 
 static mut app: Option<thermostat_mt_ma_ma> = None;
 static mut init_api: thermostat_mt_ma_ma_Application_Api<thermostat_mt_ma_ma_Initialization_Api> = api::init_api();
 static mut compute_api: thermostat_mt_ma_ma_Application_Api<thermostat_mt_ma_ma_Compute_Api> = api::compute_api();
-static mut monitoring_enabled: bool = false;
 
 #[no_mangle]
 pub extern "C" fn thermostat_mt_ma_ma_initialize() {
@@ -48,15 +46,8 @@ pub extern "C" fn thermostat_mt_ma_ma_initialize() {
     #[cfg(test)]
     crate::bridge::extern_c_api::initialize_test_globals();
 
-    monitoring_enabled = extern_c_api::unsafe_is_monitoring_enabled();
-
     let mut _app = thermostat_mt_ma_ma::new();
     _app.initialize(&mut init_api);
-
-    if monitoring_enabled {
-      extern_c_api::unsafe_put_sv_lastCmd(&_app.lastCmd);
-    }
-
     app = Some(_app);
   }
 }
@@ -65,16 +56,7 @@ pub extern "C" fn thermostat_mt_ma_ma_initialize() {
 pub extern "C" fn thermostat_mt_ma_ma_timeTriggered() {
   unsafe {
     if let Some(_app) = app.as_mut() {
-      // Injected GUMBO state variables, if the test controller set any.
-      if crate::bridge::extern_c_api::unsafe_is_injection_enabled() {
-        if let Some(v) = crate::bridge::extern_c_api::unsafe_get_inj_sv_lastCmd() {
-          _app.lastCmd = v;
-        }
-      }
       _app.timeTriggered(&mut compute_api);
-      if monitoring_enabled {
-        extern_c_api::unsafe_put_sv_lastCmd(&_app.lastCmd);
-      }
     } else {
       panic!("Unexpected: app is None");
     }

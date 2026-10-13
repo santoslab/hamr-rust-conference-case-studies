@@ -91,18 +91,17 @@ Open Platform,vm,developer,project,makefile,101
 Open Platform,vm,hamr-generated,c,code,375
 Open Platform,vm,hamr-template,c,code,4
 Open Platform,vm,hamr-template,project,makefile,66
-Isolette,bin,hamr-generated,other,code,114
 Isolette,c-glue,developer,c,code,20
 Isolette,c-glue,hamr-generated,c,code,3503
 Isolette,c-glue,hamr-generated,project,build-script,684
-Isolette,c-glue,hamr-generated,project,makefile,286
+Isolette,c-glue,hamr-generated,project,makefile,274
 Isolette,c-glue,hamr-template,c,code,185
 Isolette,component,developer,rust,exec,231
 Isolette,component,developer,rust,other,7
 Isolette,component,developer,rust,proof,3
 Isolette,component,developer,rust,spec,7
 Isolette,component,hamr-contract,rust,exec,10
-Isolette,component,hamr-contract,rust,spec,154
+Isolette,component,hamr-contract,rust,spec,158
 Isolette,component,hamr-generated,rust,exec,2260
 Isolette,component,hamr-generated,rust,other,358
 Isolette,component,hamr-generated,rust,proof,19
@@ -120,32 +119,8 @@ Isolette,gumbo-library,hamr-generated,rust,exec,58
 Isolette,gumbo-library,hamr-generated,rust,other,12
 Isolette,gumbo-library,hamr-generated,rust,spec,53
 Isolette,gumbo-library,hamr-template,project,toml,14
-Isolette,monitor-test-hooks,hamr-contract,rust,spec,4
-Isolette,monitor-test-hooks,hamr-generated,c,code,150
-Isolette,monitor-test-hooks,hamr-generated,rust,exec,410
-Isolette,monitor-test-hooks,hamr-generated,rust,other,25
-Isolette,observers,hamr-generated,other,code,12
-Isolette,observers,hamr-generated,rust,exec,2878
-Isolette,observers,hamr-generated,rust,other,166
-Isolette,observers,hamr-template,other,code,3
 Isolette,project,developer,project,build-script,115
 Isolette,project,developer,project,docs,2
-Isolette,system-test,developer,rust,exec,93
-Isolette,system-test,developer,rust,other,20
-Isolette,system-test,hamr-generated,c,code,1024
-Isolette,system-test,hamr-generated,other,code,527
-Isolette,system-test,hamr-generated,rust,exec,1863
-Isolette,system-test,hamr-generated,rust,other,114
-Isolette,system-test,hamr-template,c,code,17
-Isolette,system-test,hamr-template,other,code,42
-Isolette,system-test,hamr-template,rust,exec,20
-Isolette,system-test,hamr-template,rust,other,12
-Isolette,system-verification,hamr-generated,other,code,84
-Isolette,system-verification,hamr-generated,rust,exec,29
-Isolette,system-verification,hamr-generated,rust,other,660
-Isolette,system-verification,hamr-generated,rust,proof,3724
-Isolette,system-verification,hamr-generated,rust,spec,12892
-Isolette,system-verification,hamr-template,other,code,3
 Isolette,test,developer,rust,exec,542
 Isolette,test,developer,rust,other,112
 Isolette,test,hamr-generated,rust,exec,3443

@@ -49,7 +49,7 @@ CASES = {
 # (`data` is HAMR's generated crate for the model's data types)
 LIB_HOSTS = {
     ("BASS", "FirewallRx_FirewallRx"): ["data", "GumboLib"],
-    ("Isolette", "test_controller"): ["data", "GUMBO_Library", "observers"],
+    ("Isolette", "operator_interface_oip_oit"): ["data", "GUMBO_Library"],
     ("Open Platform", "seL4_RxFirewall_RxFirewall"): ["data", "GumboLib", "firewall-core"],
     ("Open Platform", "seL4_MavlinkFirewall_MavlinkFirewall"): ["mavlink_parser_vest", "vest_lib"],
     ("RTS", "actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic"): ["data"],
@@ -366,7 +366,7 @@ def write_outputs(rows, runs, baseline, failed, write_csv=True):
            "- **Crate**: the Cargo package name.",
            "- **Role**: *component* = a crate verified through its own `make verus` target (the thread crates, and "
            "Isolette's test controller and system-proof crate); *library* = a library crate (`data`, the GUMBO library "
-           "crate, `firewall-core`, `observers`, `mavlink_parser_vest`, and the third-party `vest_lib`), measured while "
+           "crate, `firewall-core`, `mavlink_parser_vest`, and the third-party `vest_lib`), measured while "
            "verifying one crate that depends on it.",
            "- **Verified**: number of functions Verus verified in the crate (its `verification results:: N verified`).",
            "- **Errors**: number of verification errors.",

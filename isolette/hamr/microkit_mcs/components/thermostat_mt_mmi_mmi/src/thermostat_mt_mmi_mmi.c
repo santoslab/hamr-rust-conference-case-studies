@@ -10,7 +10,6 @@ volatile sb_queue_Isolette_Data_Model_Temp_i_1_t *upper_alarm_temp_queue_1;
 volatile sb_queue_Isolette_Data_Model_Temp_i_1_t *lower_alarm_temp_queue_1;
 volatile sb_queue_Isolette_Data_Model_Status_1_t *monitor_status_queue_1;
 volatile sb_queue_Isolette_Data_Model_Failure_Flag_i_1_t *interface_failure_queue_1;
-volatile sb_queue_Isolette_Data_Model_On_Off_1_t *sv_lastCmd_queue_1;
 volatile sb_queue_Isolette_Data_Model_Monitor_Mode_1_t *monitor_mode_queue_1;
 sb_queue_Isolette_Data_Model_Monitor_Mode_1_Recv_t monitor_mode_recv_queue;
 volatile sb_queue_Isolette_Data_Model_TempWstatus_i_1_t *lower_alarm_tempWstatus_queue_1;
@@ -42,14 +41,6 @@ bool put_monitor_status(const Isolette_Data_Model_Status *data) {
 
 bool put_interface_failure(const Isolette_Data_Model_Failure_Flag_i *data) {
   sb_queue_Isolette_Data_Model_Failure_Flag_i_1_enqueue((sb_queue_Isolette_Data_Model_Failure_Flag_i_1_t *) interface_failure_queue_1, (Isolette_Data_Model_Failure_Flag_i *) data);
-
-  return true;
-}
-
-bool put_sv_lastCmd(const Isolette_Data_Model_On_Off *data) {
-  if (is_monitoring_enabled()) {
-    sb_queue_Isolette_Data_Model_On_Off_1_enqueue((sb_queue_Isolette_Data_Model_On_Off_1_t *) sv_lastCmd_queue_1, (Isolette_Data_Model_On_Off *) data);
-  }
 
   return true;
 }
@@ -122,25 +113,6 @@ uintmax_t get_current_tempWstatus_num_invalid(void) {
   return sb_queue_Isolette_Data_Model_TempWstatus_i_1_numInvalid((sb_queue_Isolette_Data_Model_TempWstatus_i_1_Recv_t *) &current_tempWstatus_recv_queue);
 }
 
-volatile sb_queue_Isolette_Data_Model_On_Off_1_t *inj_sv_lastCmd_queue;
-sb_queue_Isolette_Data_Model_On_Off_1_Recv_t inj_sv_lastCmd_recv;
-
-bool get_inj_sv_lastCmd(Isolette_Data_Model_On_Off *value) {
-  if (inj_sv_lastCmd_queue == NULL) {
-    return false;
-  }
-  sb_event_counter_t numDropped;
-  return sb_queue_Isolette_Data_Model_On_Off_1_dequeue(&inj_sv_lastCmd_recv, &numDropped, value);
-}
-
-bool is_injection_enabled(void) {
-  return inj_sv_lastCmd_queue != NULL;
-}
-
-bool is_monitoring_enabled(void) {
-  return sv_lastCmd_queue_1 != NULL;
-}
-
 void init(void) {
   printf("%s | INIT!\n", microkit_name);
 
@@ -152,8 +124,6 @@ void init(void) {
 
   sb_queue_Isolette_Data_Model_Failure_Flag_i_1_init((sb_queue_Isolette_Data_Model_Failure_Flag_i_1_t *) interface_failure_queue_1);
 
-  sb_queue_Isolette_Data_Model_On_Off_1_init((sb_queue_Isolette_Data_Model_On_Off_1_t *) sv_lastCmd_queue_1);
-
   sb_queue_Isolette_Data_Model_Monitor_Mode_1_Recv_init(&monitor_mode_recv_queue, (sb_queue_Isolette_Data_Model_Monitor_Mode_1_t *) monitor_mode_queue_1);
 
   sb_queue_Isolette_Data_Model_TempWstatus_i_1_Recv_init(&lower_alarm_tempWstatus_recv_queue, (sb_queue_Isolette_Data_Model_TempWstatus_i_1_t *) lower_alarm_tempWstatus_queue_1);
@@ -161,10 +131,6 @@ void init(void) {
   sb_queue_Isolette_Data_Model_TempWstatus_i_1_Recv_init(&upper_alarm_tempWstatus_recv_queue, (sb_queue_Isolette_Data_Model_TempWstatus_i_1_t *) upper_alarm_tempWstatus_queue_1);
 
   sb_queue_Isolette_Data_Model_TempWstatus_i_1_Recv_init(&current_tempWstatus_recv_queue, (sb_queue_Isolette_Data_Model_TempWstatus_i_1_t *) current_tempWstatus_queue_1);
-
-  if (inj_sv_lastCmd_queue != NULL) {
-    sb_queue_Isolette_Data_Model_On_Off_1_Recv_init(&inj_sv_lastCmd_recv, (sb_queue_Isolette_Data_Model_On_Off_1_t *) inj_sv_lastCmd_queue);
-  }
 
   thermostat_mt_mmi_mmi_initialize();
 

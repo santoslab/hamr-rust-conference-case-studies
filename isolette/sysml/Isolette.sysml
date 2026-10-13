@@ -1,4 +1,4 @@
-//@ HAMR: --platform Microkit --scheduling UserLand --verus-attribute-syntax --experimental-options ENABLE_TEST_SCHEDULER --package-name isolette --output-dir ../hamr --sel4-output-dir ../hamr/microkit_mcs
+//@ HAMR: --platform Microkit --scheduling UserLand --verus-attribute-syntax --experimental-options DISABLE_SYSTEM_VERIFICATION --package-name isolette --output-dir ../hamr --sel4-output-dir ../hamr/microkit_mcs
 
 // Isolette.sysml
 //
