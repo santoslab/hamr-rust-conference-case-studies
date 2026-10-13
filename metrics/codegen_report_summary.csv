@@ -1,0 +1,37 @@
+case_study,thread_instance,thread_type,state vars,functions,invariants,integ. assume,integ. guarantee,init guarantee,compute assume,compute guarantee,compute case,handler,clauses,verus_lines
+BASS,ArduPilot.ArduPilot,SW::ArduPilot_i,0,0,0,0,0,0,0,0,0,0,0,0
+BASS,FirewallRx.FirewallRx,SW::Firewall_Rx_i,1,0,0,0,0,1,0,9,0,0,10,54
+BASS,FirewallTx.FirewallTx,SW::Firewall_Tx_i,0,0,0,0,0,1,0,6,0,0,7,37
+BASS,LowLevelEthernetDriver.LowLevelEthernetDriver,SW::LowLevelEthernetDriver_i,0,0,0,0,0,0,0,0,0,0,0,0
+BASS,ModeManager.ModeManager,SW::ModeManager_i,2,0,0,0,0,1,0,7,0,0,8,40
+Open Platform,seL4.MavlinkFirewall.MavlinkFirewall,SW::MavlinkFirewall,0,3,0,0,0,0,0,16,0,0,16,68
+Open Platform,seL4.RxFirewall.RxFirewall,SW::RxFirewall,0,0,0,0,0,0,0,20,0,0,20,96
+Open Platform,seL4.TxFirewall.TxFirewall,SW::TxFirewall,0,0,0,0,4,0,0,16,0,0,20,92
+Open Platform,seL4.LowLevelEthernetDriver.LowLevelEthernetDriver,SW::LowLevelEthernetDriver,0,0,0,0,0,0,0,0,0,0,0,0
+Open Platform,seL4.ArduPilot.ArduPilot,SW::ArduPilot,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,thermostat.rt.mri.mri,Regulate::Manage_Regulator_Interface_i,0,1,0,0,0,1,1,1,9,0,12,69
+Isolette,thermostat.rt.mhs.mhs,Regulate::Manage_Heat_Source_i,1,0,0,0,0,2,1,1,5,0,9,48
+Isolette,thermostat.rt.mrm.mrm,Regulate::Manage_Regulator_Mode_i,1,2,0,0,0,1,0,1,5,0,7,52
+Isolette,thermostat.rt.drf.drf,Regulate::Detect_Regulator_Failure_i,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,thermostat.mt.mmi.mmi,Monitor::Manage_Monitor_Interface_i,1,1,0,2,0,1,1,0,7,0,11,58
+Isolette,thermostat.mt.ma.ma,Monitor::Manage_Alarm_i,1,1,0,0,0,1,3,0,5,0,9,71
+Isolette,thermostat.mt.mmm.mmm,Monitor::Manage_Monitor_Mode_i,1,2,0,0,0,2,0,0,5,0,7,56
+Isolette,thermostat.mt.dmf.dmf,Monitor::Detect_Monitor_Failure_i,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,operator_interface.oip.oit,Operator_Interface::Operator_Interface_Thread_i,0,1,0,0,2,0,0,2,0,0,4,19
+Isolette,temperature_sensor.cpi.thermostat,Devices::Temperature_Sensor_i,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,heat_source.cpi.heat_controller,Devices::Heat_Source_i,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,instrumentationMock.instrumentationMockThread,Instrumentation::InstrumentationMockThread_i,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,eventControlMock.eventControlMockThread,EventControl::EventControlMockThread_i,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,actuatorsMock.actuatorsMockThread,Actuators::ActuatorsMockThread_i,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,actuationSubsystem.actuationUnit1.temperatureLogic.coincidenceLogic,Actuation::CoincidenceLogic_i,0,0,0,0,0,0,0,1,0,0,1,13
+RTS,actuationSubsystem.actuationUnit1.pressureLogic.coincidenceLogic,Actuation::CoincidenceLogic_i,0,0,0,0,0,0,0,1,0,0,1,13
+RTS,actuationSubsystem.actuationUnit1.saturationLogic.coincidenceLogic,Actuation::CoincidenceLogic_i,0,0,0,0,0,0,0,1,0,0,1,13
+RTS,actuationSubsystem.actuationUnit1.tempPressureTripOut.orLogic,Actuation::OrLogic_i,0,0,0,0,0,0,0,1,0,0,1,2
+RTS,actuationSubsystem.actuationUnit2.temperatureLogic.coincidenceLogic,Actuation::CoincidenceLogic_i,0,0,0,0,0,0,0,1,0,0,1,13
+RTS,actuationSubsystem.actuationUnit2.pressureLogic.coincidenceLogic,Actuation::CoincidenceLogic_i,0,0,0,0,0,0,0,1,0,0,1,13
+RTS,actuationSubsystem.actuationUnit2.saturationLogic.coincidenceLogic,Actuation::CoincidenceLogic_i,0,0,0,0,0,0,0,1,0,0,1,13
+RTS,actuationSubsystem.actuationUnit2.tempPressureTripOut.orLogic,Actuation::OrLogic_i,0,0,0,0,0,0,0,1,0,0,1,2
+RTS,actuationSubsystem.tempPressureActuatorUnit.actuateTempPressureActuator.orLogic,Actuation::OrLogic_i,0,0,0,0,0,0,0,1,0,0,1,2
+RTS,actuationSubsystem.tempPressureActuatorUnit.tempPressureActuator.actuator,Actuation::Actuator_i,0,0,0,0,0,1,0,1,0,0,2,6
+RTS,actuationSubsystem.saturationActuatorUnit.actuateSaturationActuator.orLogic,Actuation::OrLogic_i,0,0,0,0,0,0,0,1,0,0,1,2
+RTS,actuationSubsystem.saturationActuatorUnit.saturationActuator.actuator,Actuation::Actuator_i,0,0,0,0,0,1,0,1,0,0,2,6

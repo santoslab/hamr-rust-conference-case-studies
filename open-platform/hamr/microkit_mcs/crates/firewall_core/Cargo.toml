@@ -1,0 +1,12 @@
+[package]
+name = "firewall-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+vstd = { version = "=0.0.0-2026-09-06-0133", default-features=false }
+verus_builtin = { version = "=0.0.0-2026-09-06-0133" }
+verus_builtin_macros = { version = "=0.0.0-2026-09-06-0133" }
+
+[package.metadata.verus]
+verify = true

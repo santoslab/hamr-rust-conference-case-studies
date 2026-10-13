@@ -1,0 +1,178 @@
+case_study,role,provenance,language,mode,lines
+BASS,c-glue,hamr-generated,c,code,1874
+BASS,c-glue,hamr-generated,project,build-script,523
+BASS,c-glue,hamr-generated,project,makefile,200
+BASS,c-glue,hamr-template,c,code,85
+BASS,component,developer,project,makefile,25
+BASS,component,developer,rust,exec,160
+BASS,component,developer,rust,other,7
+BASS,component,hamr-contract,rust,exec,6
+BASS,component,hamr-contract,rust,spec,171
+BASS,component,hamr-generated,rust,exec,870
+BASS,component,hamr-generated,rust,other,166
+BASS,component,hamr-generated,rust,proof,7
+BASS,component,hamr-generated,rust,proof+exec,8
+BASS,component,hamr-generated,rust,spec,80
+BASS,component,hamr-template,project,makefile,170
+BASS,component,hamr-template,project,toml,150
+BASS,component,hamr-template,rust,exec,275
+BASS,component,hamr-template,rust,other,74
+BASS,component,hamr-template,rust,spec,15
+BASS,data,hamr-generated,rust,exec,75
+BASS,data,hamr-generated,rust,other,15
+BASS,data,hamr-template,project,toml,13
+BASS,gumbo-library,hamr-generated,rust,exec,52
+BASS,gumbo-library,hamr-generated,rust,other,12
+BASS,gumbo-library,hamr-generated,rust,spec,52
+BASS,gumbo-library,hamr-template,project,toml,14
+BASS,project,developer,project,build-script,119
+BASS,project,developer,project,requirements,902
+BASS,test,developer,rust,exec,847
+BASS,test,developer,rust,other,219
+BASS,test,hamr-generated,rust,exec,1549
+BASS,test,hamr-generated,rust,other,453
+BASS,test,hamr-template,rust,exec,64
+BASS,test,hamr-template,rust,other,71
+Open Platform,c-glue,developer,c,code,71
+Open Platform,c-glue,developer,project,build-script,155
+Open Platform,c-glue,developer,project,docs,117
+Open Platform,c-glue,developer,project,makefile,65
+Open Platform,c-glue,hamr-generated,c,code,2020
+Open Platform,c-glue,hamr-generated,project,build-script,603
+Open Platform,c-glue,hamr-generated,project,makefile,206
+Open Platform,c-glue,hamr-template,c,code,68
+Open Platform,component,developer,project,makefile,31
+Open Platform,component,developer,project,toml,13
+Open Platform,component,developer,rust,exec,488
+Open Platform,component,developer,rust,other,72
+Open Platform,component,developer,rust,proof,40
+Open Platform,component,developer,rust,spec,107
+Open Platform,component,hamr-contract,rust,spec,168
+Open Platform,component,hamr-generated,rust,exec,1664
+Open Platform,component,hamr-generated,rust,other,199
+Open Platform,component,hamr-generated,rust,proof,20
+Open Platform,component,hamr-generated,rust,proof+exec,16
+Open Platform,component,hamr-generated,rust,spec,416
+Open Platform,component,hamr-template,project,makefile,129
+Open Platform,component,hamr-template,project,toml,120
+Open Platform,component,hamr-template,rust,exec,222
+Open Platform,component,hamr-template,rust,other,52
+Open Platform,component,hamr-template,rust,spec,38
+Open Platform,data,hamr-generated,rust,exec,36
+Open Platform,data,hamr-generated,rust,other,13
+Open Platform,data,hamr-template,project,toml,13
+Open Platform,developer-library,developer,project,docs,22
+Open Platform,developer-library,developer,project,makefile,15
+Open Platform,developer-library,developer,project,toml,26
+Open Platform,developer-library,developer,project,vest-spec,56
+Open Platform,developer-library,developer,rust,exec,647
+Open Platform,developer-library,developer,rust,other,48
+Open Platform,developer-library,developer,rust,proof,15
+Open Platform,developer-library,developer,rust,spec,397
+Open Platform,developer-library,vest-generated,rust,exec,748
+Open Platform,developer-library,vest-generated,rust,other,30
+Open Platform,developer-library,vest-generated,rust,proof,1497
+Open Platform,developer-library,vest-generated,rust,spec,881
+Open Platform,driver,developer,project,toml,16
+Open Platform,driver,developer,rust,exec,421
+Open Platform,driver,developer,rust,other,46
+Open Platform,gumbo-library,hamr-generated,rust,exec,278
+Open Platform,gumbo-library,hamr-generated,rust,other,12
+Open Platform,gumbo-library,hamr-generated,rust,spec,278
+Open Platform,gumbo-library,hamr-template,project,toml,14
+Open Platform,project,developer,project,build-script,128
+Open Platform,test,hamr-generated,rust,exec,1536
+Open Platform,test,hamr-generated,rust,other,246
+Open Platform,test,hamr-template,rust,exec,37
+Open Platform,test,hamr-template,rust,other,51
+Open Platform,vm,developer,c,code,468
+Open Platform,vm,developer,project,build-script,77
+Open Platform,vm,developer,project,makefile,101
+Open Platform,vm,hamr-generated,c,code,375
+Open Platform,vm,hamr-template,c,code,4
+Open Platform,vm,hamr-template,project,makefile,66
+Isolette,bin,hamr-generated,other,code,114
+Isolette,c-glue,developer,c,code,20
+Isolette,c-glue,hamr-generated,c,code,3503
+Isolette,c-glue,hamr-generated,project,build-script,684
+Isolette,c-glue,hamr-generated,project,makefile,286
+Isolette,c-glue,hamr-template,c,code,185
+Isolette,component,developer,rust,exec,231
+Isolette,component,developer,rust,other,7
+Isolette,component,developer,rust,proof,3
+Isolette,component,developer,rust,spec,7
+Isolette,component,hamr-contract,rust,exec,10
+Isolette,component,hamr-contract,rust,spec,154
+Isolette,component,hamr-generated,rust,exec,2260
+Isolette,component,hamr-generated,rust,other,358
+Isolette,component,hamr-generated,rust,proof,19
+Isolette,component,hamr-generated,rust,proof+exec,26
+Isolette,component,hamr-generated,rust,spec,398
+Isolette,component,hamr-template,project,makefile,351
+Isolette,component,hamr-template,project,toml,270
+Isolette,component,hamr-template,rust,exec,497
+Isolette,component,hamr-template,rust,other,117
+Isolette,component,hamr-template,rust,spec,63
+Isolette,data,hamr-generated,rust,exec,104
+Isolette,data,hamr-generated,rust,other,22
+Isolette,data,hamr-template,project,toml,13
+Isolette,gumbo-library,hamr-generated,rust,exec,58
+Isolette,gumbo-library,hamr-generated,rust,other,12
+Isolette,gumbo-library,hamr-generated,rust,spec,53
+Isolette,gumbo-library,hamr-template,project,toml,14
+Isolette,monitor-test-hooks,hamr-contract,rust,spec,4
+Isolette,monitor-test-hooks,hamr-generated,c,code,150
+Isolette,monitor-test-hooks,hamr-generated,rust,exec,410
+Isolette,monitor-test-hooks,hamr-generated,rust,other,25
+Isolette,observers,hamr-generated,other,code,12
+Isolette,observers,hamr-generated,rust,exec,2878
+Isolette,observers,hamr-generated,rust,other,166
+Isolette,observers,hamr-template,other,code,3
+Isolette,project,developer,project,build-script,115
+Isolette,project,developer,project,docs,2
+Isolette,system-test,developer,rust,exec,93
+Isolette,system-test,developer,rust,other,20
+Isolette,system-test,hamr-generated,c,code,1024
+Isolette,system-test,hamr-generated,other,code,527
+Isolette,system-test,hamr-generated,rust,exec,1863
+Isolette,system-test,hamr-generated,rust,other,114
+Isolette,system-test,hamr-template,c,code,17
+Isolette,system-test,hamr-template,other,code,42
+Isolette,system-test,hamr-template,rust,exec,20
+Isolette,system-test,hamr-template,rust,other,12
+Isolette,system-verification,hamr-generated,other,code,84
+Isolette,system-verification,hamr-generated,rust,exec,29
+Isolette,system-verification,hamr-generated,rust,other,660
+Isolette,system-verification,hamr-generated,rust,proof,3724
+Isolette,system-verification,hamr-generated,rust,spec,12892
+Isolette,system-verification,hamr-template,other,code,3
+Isolette,test,developer,rust,exec,542
+Isolette,test,developer,rust,other,112
+Isolette,test,hamr-generated,rust,exec,3443
+Isolette,test,hamr-generated,rust,other,876
+Isolette,test,hamr-template,rust,exec,118
+Isolette,test,hamr-template,rust,other,131
+RTS,c-glue,hamr-generated,c,code,3339
+RTS,c-glue,hamr-generated,project,build-script,811
+RTS,c-glue,hamr-generated,project,makefile,328
+RTS,c-glue,hamr-template,c,code,255
+RTS,component,developer,rust,exec,195
+RTS,component,developer,rust,other,4
+RTS,component,hamr-contract,rust,spec,44
+RTS,component,hamr-generated,rust,exec,3691
+RTS,component,hamr-generated,rust,other,585
+RTS,component,hamr-generated,rust,proof,38
+RTS,component,hamr-generated,rust,proof+exec,38
+RTS,component,hamr-generated,rust,spec,940
+RTS,component,hamr-template,project,makefile,585
+RTS,component,hamr-template,project,toml,435
+RTS,component,hamr-template,rust,exec,809
+RTS,component,hamr-template,rust,other,225
+RTS,component,hamr-template,rust,spec,45
+RTS,data,hamr-generated,rust,other,1
+RTS,data,hamr-template,project,toml,13
+RTS,project,developer,project,build-script,120
+RTS,test,hamr-generated,rust,exec,1629
+RTS,test,hamr-generated,rust,other,966
+RTS,test,hamr-template,rust,exec,179
+RTS,test,hamr-template,rust,other,195

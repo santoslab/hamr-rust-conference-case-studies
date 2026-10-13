@@ -1,0 +1,22 @@
+case_study,file,lines,model_code,model_comment,model_blank,gumbo_component_code,gumbo_component_comment,gumbo_component_blank,gumbo_component_description,gumbo_component_defs,gumbo_component_blocks,gumbo_datatype_code,gumbo_datatype_comment,gumbo_datatype_blank,gumbo_datatype_description,gumbo_datatype_defs,gumbo_datatype_blocks,gumbo_system_code,gumbo_system_comment,gumbo_system_blank,gumbo_system_description,gumbo_system_defs,gumbo_system_blocks,gumbo_library_code,gumbo_library_comment,gumbo_library_blank,gumbo_library_description,gumbo_library_defs,gumbo_library_blocks
+BASS,bass/sysml/GumboLib.sysml,30,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,2,7,0,13,1
+BASS,bass/sysml/SW.sysml,435,152,47,66,137,0,26,0,0,3,7,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+Open Platform,open-platform/sysml_mcs/GumboLib.sysml,196,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,4,53,0,49,1
+Open Platform,open-platform/sysml_mcs/Platform.sysml,22,16,1,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Open Platform,open-platform/sysml_mcs/SW.sysml,612,363,2,53,171,0,23,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Abstract_Definitions.sysml,20,11,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Devices.sysml,82,50,8,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/GUMBO_Library.sysml,52,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,4,18,0,11,1
+Isolette,isolette/sysml/Isolette.sysml,642,60,40,28,0,0,0,0,0,0,0,0,0,0,0,0,415,7,92,4,9,1,0,0,0,0,0,0
+Isolette,isolette/sysml/Isolette_Data_Model.sysml,118,39,34,27,0,0,0,0,0,0,18,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Isolette_Environment.sysml,105,47,39,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Isolette_Properties.sysml,38,17,12,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Monitor.sysml,553,119,108,62,214,11,39,49,4,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Operator_Interface.sysml,146,72,18,19,25,5,7,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Regulate.sysml,537,125,116,61,176,23,36,41,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Isolette,isolette/sysml/Thermostat.sysml,73,40,24,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,rts/sysml/Actuation.sysml,278,200,11,33,30,2,2,4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,rts/sysml/Actuators.sysml,21,15,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,rts/sysml/EventControl.sysml,21,15,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,rts/sysml/Instrumentation.sysml,93,81,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+RTS,rts/sysml/RTS.sysml,114,61,45,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
