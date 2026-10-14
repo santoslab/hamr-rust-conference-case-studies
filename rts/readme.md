@@ -10,6 +10,11 @@ contracts on the CoincidenceLogic, OrLogic, and Actuator threads.
   `sysml/bin/run-hamr.cmd` (needs `SYSML_AADL_LIBRARIES` pointing at the SysML AADL libraries)
 - Microkit/Rust: [hamr/microkit_mcs](hamr/microkit_mcs) — user-land (MCS) scheduler
 
+**Contents**
+
+- [Changes from upstream](#changes-from-upstream)
+- [Verifying the instrumentation mock](#verifying-the-instrumentation-mock)
+
 ## Changes from upstream
 
 The upstream model targets Slang (JVM / Linux / seL4-CAmkES). This version targets Rust

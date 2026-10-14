@@ -12,6 +12,16 @@ ModeManager's behavior and test code. The only new behavior code is a small Ardu
 Status: `make verus` succeeds for every crate, including the system-verification crate, and
 `make test` passes (118 tests; see [Testing](#testing)).
 
+**Contents**
+
+- [What was added](#what-was-added)
+  - [1. Library predicates (`GumboLib.sysml` L32–L44)](#1-library-predicates-gumbolibsysml-l32l44)
+  - [2. Integration constraints](#2-integration-constraints)
+  - [3. A composition, for the connection checks (`SW.sysml` L461–L477)](#3-a-composition-for-the-connection-checks-swsysml-l461l477)
+- [ArduPilot behavior](#ardupilot-behavior)
+- [Testing](#testing)
+- [Regenerating and verifying](#regenerating-and-verifying)
+
 ## What was added
 
 ### 1. Library predicates ([`GumboLib.sysml` L32–L44](sysml/GumboLib.sysml#L32-L44))

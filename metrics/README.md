@@ -11,6 +11,11 @@ Scripts and data behind the paper's size and verification metrics.
 | `code_loc.py` → `code_loc.md` / `.csv` / `code_loc_files.csv` | Implementation size: every Rust/C line by provenance (HAMR-generated, HAMR contract regions, HAMR template, developer, Vest-generated), Verus mode (Verus' `line_count`: spec/proof/exec/trusted) and role |
 | `verus_timing.py` | Verus verification time per crate (crate only, dependencies cached; median of N runs) |
 
+**Contents**
+
+- [How the codegen reports were produced](#how-the-codegen-reports-were-produced)
+- [Inputs for `code_loc.py`](#inputs-for-code_locpy)
+
 ## How the codegen reports were produced
 
 HAMR writes `hamr/microkit/reporting/codegen_report_sysml.json` only for domain-scheduler
