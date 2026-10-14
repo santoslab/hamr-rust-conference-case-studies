@@ -1,0 +1,3 @@
+# Application build configuration: make CONFIG=rpi4b.mk ...
+export MICROKIT_BOARD := rpi4b_4gb
+export SYSTEM_MAKEFILE := rpi4b.system.mk

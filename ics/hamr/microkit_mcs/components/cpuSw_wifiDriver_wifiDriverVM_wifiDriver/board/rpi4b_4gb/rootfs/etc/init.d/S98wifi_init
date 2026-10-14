@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "Show connection interfaces:"
+ip a
+
+echo "Set up wlan0"
+ip link set wlan0 up
+
+echo "Start wpa_supplicant with configuration file"
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
+
+echo "Request IP address"
+udhcpc -i wlan0
+
+echo "Show IP address:"
+ip route
+ip addr show wlan0

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Binding to Flask App with Gunicorn"
+gunicorn --bind unix:/root/ground_station.sock --chdir /root ground_station:app

@@ -1,0 +1,11 @@
+services:
+  ground_station:
+    build: ./
+    volumes:
+      - ./:/home/microkit/ICS
+    ports: 
+      - "8080:8080/tcp"
+      - "8443:8443/tcp"
+    stdin_open: true
+    tty: true
+    command: /bin/bash

@@ -1,0 +1,8 @@
+.{
+    .name = .rootfs_cpio_gz,
+    .version = "0.0.0",
+
+    .paths = .{
+        "rootfs.cpio.gz",
+    }
+}
