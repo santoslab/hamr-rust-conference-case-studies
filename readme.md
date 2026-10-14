@@ -18,3 +18,7 @@ present) the requirements were copied; build outputs (`target/`, `.slang/`, cove
 
 All four case studies use the seL4 Microkit user-land (MCS) scheduler. Where a case study
 differs from its upstream source, its readme lists the changes.
+
+[`bass_ic`](bass_ic/readme.md) is not a measured case study. It is a copy of BASS with GUMBO
+integration constraints between the firewalls and ArduPilot, used to illustrate how HAMR turns
+integration constraints into Verus contracts and per-connection Verus VCs.
