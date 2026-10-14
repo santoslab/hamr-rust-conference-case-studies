@@ -10,6 +10,7 @@ Counted from HAMR's codegen reports (see `README.md` for how they were produced)
 | Open Platform | 5 (5) | 24/24 | 0 | 3 | 0 | 0 | 4 | 0 | 0 | 52 | 0 | 0 | 56 | 256 |
 | Isolette | 11 (11) | 28/21 | 5 | 8 | 0 | 2 | 2 | 8 | 6 | 5 | 36 | 0 | 59 | 373 |
 | RTS | 15 (6) | 38/38 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 12 | 0 | 0 | 14 | 98 |
+| ICS | 12 (12) | 23/21 | 9 | 2 | 0 | 0 | 0 | 5 | 3 | 19 | 0 | 0 | 27 | 83 |
 
 <details>
 <summary>Key</summary>
@@ -86,6 +87,23 @@ Every count is summed over all thread *instances*: the contract of a thread defi
 | `Actuation::CoincidenceLogic_i` | 6 | 4/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 13 |
 | `Actuation::OrLogic_i` | 4 | 2/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 2 |
 | `Actuation::Actuator_i` | 2 | 2/1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 2 | 6 |
+
+### ICS
+
+| Thread type | Instances | Ports in/out | state vars | functions | invariants | integ. assume | integ. guarantee | init guarantee | compute assume | compute guarantee | compute case | handler | Clauses | Verus lines |
+|:--|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| `GroundStation::WifiDriver_t` | 1 | 3/3 | 1 | 0 | 0 | 0 | 0 | 1 | 2 | 2 | 0 | 0 | 5 | 14 |
+| `GroundStation::WifiDriverVM_t` | 1 | 2/2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| `GroundStation::BtDriver_t` | 1 | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| `GroundStation::UsbDriver_t` | 1 | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| `GroundStation::DataManager_t` | 1 | 4/3 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 2 | 0 | 0 | 3 | 9 |
+| `GroundStation::DataStorage_t` | 1 | 3/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| `GroundStation::DataAnalysis_t` | 1 | 2/2 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 3 |
+| `GroundStation::Decryptor_t` | 1 | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 3 |
+| `GroundStation::Encryptor_t` | 1 | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 2 | 6 |
+| `GroundStation::LogMonitor_t` | 1 | 2/3 | 3 | 0 | 0 | 0 | 0 | 2 | 0 | 5 | 0 | 0 | 7 | 24 |
+| `GroundStation::ReportMonitor_t` | 1 | 2/2 | 4 | 1 | 0 | 0 | 0 | 1 | 0 | 6 | 0 | 0 | 7 | 21 |
+| `GroundStation::Firewall_t` | 1 | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 3 |
 
 <details>
 <summary>Key</summary>

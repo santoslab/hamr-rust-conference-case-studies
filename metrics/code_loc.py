@@ -40,7 +40,7 @@ from collections import Counter, OrderedDict, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CASES = OrderedDict([("BASS", "bass"), ("Open Platform", "open-platform"),
-                     ("Isolette", "isolette"), ("RTS", "rts")])
+                     ("Isolette", "isolette"), ("RTS", "rts"), ("ICS", "ics")])
 SKIP_DIRS = {"target", "build", ".git", "__pycache__"}
 MARKER = re.compile(r"(//|#|/\*)\s*(BEGIN|END|PLACEHOLDER)\s+MARKER\b")
 LC_MODE = {"Spec": "spec", "Proof": "proof", "Exec": "exec", "Proof Exec": "proof+exec",
@@ -84,7 +84,7 @@ def role_of(case, rel):
         return "developer-library"
     if (len(parts) > 3 and parts[2] == "src" and parts[3] == "test") or rel.endswith("_GUMBOX.rs"):
         return "test"              # unit tests and the GUMBOX executable contracts they use
-    if crate in ("GumboLib", "GUMBO_Library"):
+    if crate in ("GumboLib", "GUMBO_Library", "GUMBO_PLTL", "MATRICS_Model_Transformations"):
         return "gumbo-library"
     if crate == "data":
         return "data"

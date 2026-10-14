@@ -10,6 +10,7 @@ Code lines only (no comments or blank lines). Rust lines are classified by Verus
 | Open Platform | 488 | 107 | 40 | 168 | 647 / 397 / 15 | 748 / 881 / 1497 |
 | Isolette | 231 | 7 | 3 | 168 | 0 / 0 / 0 | 0 / 0 / 0 |
 | RTS | 195 | 0 | 0 | 44 | 0 / 0 / 0 | 0 / 0 / 0 |
+| ICS | 39 | 0 | 0 | 126 | 0 / 0 / 0 | 0 / 0 / 0 |
 
 <details>
 <summary>Key</summary>
@@ -37,6 +38,7 @@ Columns, left to right:
 | Open Platform | 4952 | 168 | 380 | 2352 | 3156 | 11008 | 847 |
 | Isolette | 6813 | 168 | 862 | 268 | 0 | 8111 | 0 |
 | RTS | 8632 | 44 | 1334 | 199 | 0 | 10209 | 0 |
+| ICS | 7155 | 126 | 905 | 278 | 0 | 8464 | 0 |
 
 <details>
 <summary>Key</summary>
@@ -76,6 +78,9 @@ Columns, left to right:
 | Isolette | data | 104 | 0 | 0 | 0 | 22 | 126 |
 | RTS | component | 4695 | 1029 | 76 | 0 | 814 | 6614 |
 | RTS | data | 0 | 0 | 0 | 0 | 1 | 1 |
+| ICS | component | 2566 | 372 | 36 | 0 | 497 | 3471 |
+| ICS | gumbo-library | 74 | 78 | 0 | 0 | 24 | 176 |
+| ICS | data | 287 | 0 | 0 | 0 | 55 | 342 |
 
 <details>
 <summary>Key</summary>
@@ -106,6 +111,7 @@ All provenances (generated and developer-written) together; C is not included.
 | Open Platform | 0; PDF, 7 pages | 446 (111) | 202 (55) | 886 (283) | 139 (139) | 56 (56) | 1729 (644) |
 | Isolette | 0 | 625 (0) | 297 (0) | 799 (115) | 2 (2) | 0 | 1723 (117) |
 | RTS | 0 | 913 (0) | 448 (0) | 931 (120) | 0 | 0 | 2292 (120) |
+| ICS | 0 | 906 (110) | 353 (2) | 1085 (354) | 0 | 0 | 2344 (466) |
 
 <details>
 <summary>Key</summary>
@@ -134,6 +140,8 @@ Each cell is *lines (of which developer-written)*. Lines in HAMR's output direct
 | Open Platform | test | 1782 | 0 | 88 | 0 | 1870 | 1573 | 0 | 0 | 297 | 0 | 0 |
 | Isolette | test | 4319 | 0 | 249 | 654 | 5222 | 4103 | 0 | 0 | 1119 | 0 | 0 |
 | RTS | test | 2595 | 0 | 374 | 0 | 2969 | 1808 | 0 | 0 | 1161 | 0 | 0 |
+| ICS | test | 7568 | 0 | 228 | 0 | 7796 | 6890 | 0 | 0 | 906 | 0 | 0 |
+| ICS | attestation | 540 | 0 | 0 | 0 | 540 | 0 | 0 | 0 | 0 | 0 | 540 |
 
 <details>
 <summary>Key</summary>

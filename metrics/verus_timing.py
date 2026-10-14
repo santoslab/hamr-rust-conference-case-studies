@@ -44,6 +44,7 @@ CASES = {
     "Open Platform": "open-platform/hamr/microkit_mcs/crates",
     "Isolette": "isolette/hamr/microkit_mcs/crates",
     "RTS": "rts/hamr/microkit_mcs/crates",
+    "ICS": "ics/hamr/microkit_mcs/crates",
 }
 # library crates (cargo package names) re-verified inside a host crate
 # (`data` is HAMR's generated crate for the model's data types)
@@ -53,6 +54,7 @@ LIB_HOSTS = {
     ("Open Platform", "seL4_RxFirewall_RxFirewall"): ["data", "GumboLib", "firewall-core"],
     ("Open Platform", "seL4_MavlinkFirewall_MavlinkFirewall"): ["mavlink_parser_vest", "vest_lib"],
     ("RTS", "actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic"): ["data"],
+    ("ICS", "cpuSw_btDriver_btDriver"): ["data", "GUMBO_PLTL", "MATRICS_Model_Transformations"],
 }
 # crates that are libraries rather than components, even though they have a Makefile
 LIB_DIRS = {"firewall_core"}

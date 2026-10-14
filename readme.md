@@ -15,6 +15,7 @@ present) the requirements were copied; build outputs (`target/`, `.slang/`, cove
 | [Open Platform](open-platform/readme.md) — MCS version (QEMU-simulatable) | [loonwerks/INSPECTA-Open-Platform @ `cc73dd5`](https://github.com/loonwerks/INSPECTA-Open-Platform/tree/cc73dd58840d4552c9db50ffbe3c69f86c196616/ardupilot-basic) (2026-09-25) | `ardupilot-basic/{sysml_mcs,requirements,hamr/microkit_mcs}` |
 | [Isolette](isolette/readme.md) — user-land scheduler version | [loonwerks/INSPECTA-models @ `c2a471d`](https://github.com/loonwerks/INSPECTA-models/tree/c2a471dcc5675eeb8f5379bd487bc76748db1dff/isolette) (2026-10-08) | `isolette/{sysml,hamr/microkit_mcs}` |
 | [RTS](rts/readme.md) — HARDENS Reactor Trip System | [santoslab/rts-showcase @ `867385f`](https://github.com/santoslab/rts-showcase/tree/867385ffa37b89d81993d1f513d9d19eb372fd50/sysmlv2/sysml) (2026-09-01) | `sysmlv2/sysml` (model only); Rust/Verus Microkit version developed here from the Slang implementation |
+| [ICS Status](ics/readme.md) — hardened MATRICS status model | [loonwerks/MATRICS @ `fd543d1`](https://github.com/loonwerks/MATRICS/tree/fd543d127724b21d7ac0b33df670097236c4197c/Models/Status/Status_v2/Hardened/withAGREEAndGumbo) (2026-10-14) | `Models/Status/Status_v2/Hardened/withAGREEAndGumbo/{sysml,hamr/microkit_mcs_sysml}` |
 
-All four case studies use the seL4 Microkit user-land (MCS) scheduler. Where a case study
+All five case studies use the seL4 Microkit user-land (MCS) scheduler. Where a case study
 differs from its upstream source, its readme lists the changes.

@@ -8,6 +8,7 @@ Size of each case study's own `.sysml` files; the table is followed by a key def
 | Open Platform | 3 | 830 | 382 | 171 (0) | 3 | 3 | 0 (0) | 0 (0) | 0 | 135 (0) | 49 |
 | Isolette | 11 | 2366 | 582 | 415 (91) | 7 | 8 | 18 (3) | 415 (4) | 9 | 28 (0) | 11 |
 | RTS | 5 | 527 | 372 | 30 (4) | 3 | 0 | 0 (0) | 0 (0) | 0 | 0 (0) | 0 |
+| ICS | 5 | 993 | 549 | 202 (0) | 9 | 5 | 0 (0) | 0 (0) | 0 | 58 (0) | 8 |
 
 <details>
 <summary>Key</summary>

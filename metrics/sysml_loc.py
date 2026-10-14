@@ -18,7 +18,7 @@ from collections import Counter, OrderedDict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CASES = OrderedDict([("BASS", "bass/sysml"), ("Open Platform", "open-platform/sysml_mcs"),
-                     ("Isolette", "isolette/sysml"), ("RTS", "rts/sysml")])
+                     ("Isolette", "isolette/sysml"), ("RTS", "rts/sysml"), ("ICS", "ics/sysml")])
 GUMBO_OPEN = re.compile(r'language\s+"GUMBO"\s*/\*\{')
 GUMBO_CLOSE = "}*/"
 PART_DEF = re.compile(r"\bpart\s+def\s+(\w+)")

@@ -19,7 +19,7 @@ from collections import Counter, OrderedDict
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CASES = OrderedDict([("BASS", "bass"), ("Open Platform", "open-platform"),
-                     ("Isolette", "isolette"), ("RTS", "rts")])
+                     ("Isolette", "isolette"), ("RTS", "rts"), ("ICS", "ics")])
 # GUMBO kinds in report order: (column title, path into GumboReport)
 KINDS = [
     ("state vars", ("stateReport",)),

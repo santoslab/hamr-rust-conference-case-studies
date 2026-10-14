@@ -22,6 +22,8 @@ the case study's model, unchanged except for:
 - all `//@ HAMR:` configuration lines removed;
 - Open Platform only: `Scheduling = MCS` removed and `Frame_Period` raised from 100 ms to
   1000 ms in `Platform.sysml` (the domain scheduler's pacer needs the longer frame).
+- ICS Status only: `Scheduling = MCS` removed and `Frame_Period` raised from 1000 ms to
+  2000 ms in `GroundStation.sysml` (the domain scheduler's pacer needs the longer frame).  
 
 and generated with (HAMR at Verus 0.2026.09.06)
 

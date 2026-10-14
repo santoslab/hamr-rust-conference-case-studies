@@ -39,7 +39,7 @@ if (!(sysmlDir / "sysml-aadl-libraries").exists && Os.envs.contains("SYSML_AADL_
 }
 
 val slangOutputDir: Os.Path = hamrDir / (if (platform == "JVM") "slang_sysml" else "sysml")
-val sel4OutputDir: Os.Path = hamrDir / (if (platform == "Microkit") "microkit_mcs_sysml" else "sysml")
+val sel4OutputDir: Os.Path = hamrDir / (if (platform == "Microkit") "microkit_mcs" else "sysml")
 
 val codegenArgs: ISZ[String] = ISZ(
   sireum.value, "hamr", "sysml", "codegen",
