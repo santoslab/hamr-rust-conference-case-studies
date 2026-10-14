@@ -109,7 +109,7 @@ pub fn compute_spec_RC_INSPECTA_00_HLR_14_guarantee(
   implies!(
     api_EthernetFramesTxIn.is_some(),
     impliesL!(
-      !(GumboLib::isIPV4(api_EthernetFramesTxIn.unwrap())) && !(GumboLib::isARP(api_EthernetFramesTxIn.unwrap())) |
+      (!(GumboLib::isIPV4(api_EthernetFramesTxIn.unwrap())) && !(GumboLib::isARP(api_EthernetFramesTxIn.unwrap()))) |
         GumboLib::isMalformedFrame(api_EthernetFramesTxIn.unwrap()),
       api_EthernetFramesTxOut.is_none()))
 }

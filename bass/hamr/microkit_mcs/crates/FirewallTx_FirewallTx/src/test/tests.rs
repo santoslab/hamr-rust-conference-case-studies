@@ -579,22 +579,24 @@ mod GUMBOX_tests {
 //  The spec-only audit scored zero findings; the audit_A*/audit_R* probes
 //  below back that verdict (A* = oracle accepts intended behavior,
 //  R* = oracle rejects wrong behavior). The full-mode pass additionally
-//  found ONE genuine defect, demonstrated by the audit_F1* tests:
+//  found ONE genuine defect, now fixed in HAMR codegen and guarded by the
+//  audit_F1* tests:
 //
-//  F1 — the woven GUMBOX oracle for RC_INSPECTA_00_HLR_14 is WEAKER than the
+//  F1 — the woven GUMBOX oracle for RC_INSPECTA_00_HLR_14 was WEAKER than the
 //  model contract. GUMBO source antecedent:
 //      (not isIPV4 and not isARP) | isMalformedFrame
-//  emitted Rust (FirewallTx_FirewallTx_GUMBOX.rs):
+//  emitted Rust (FirewallTx_FirewallTx_GUMBOX.rs), before the fix:
 //      !(isIPV4(..)) && !(isARP(..)) | isMalformedFrame(..)
-//  In Rust, `|` binds TIGHTER than `&&`, so this regroups as
+//  In Rust, `|` binds TIGHTER than `&&`, so this regrouped as
 //      !isIPV4 && (!isARP | isMalformed)
-//  For a malformed IPv4 frame the antecedent is false, so the oracle imposes
-//  no drop obligation — the full CEP_Post ACCEPTS forwarding a malformed IPv4
+//  For a malformed IPv4 frame the antecedent was false, so the oracle imposed
+//  no drop obligation — the full CEP_Post ACCEPTED forwarding a malformed IPv4
 //  frame in Normal mode, an execution the contract text, the woven Verus
 //  ensures (which use `||` and group correctly), and the implementation all
-//  forbid. Per the audit skill, each audit_F1* test PASSES: a passing test
-//  demonstrates that the (oracle-level) specification accepts the problematic
-//  scenario. See reports/CR01-specification-audit-FirewallTx.md, Finding F1.
+//  forbid. HAMR now emits
+//      (!(isIPV4(..)) && !(isARP(..))) | isMalformedFrame(..)
+//  and the audit_F1* tests check that the oracle REJECTS that execution.
+//  See reports/CR01-specification-audit-FirewallTx.md, Finding F1.
 //
 //  Argument order for compute_CEP_Post:
 //  (api_EthernetFramesTxIn, api_CurrentMode, api_EthernetFramesTxOut,
@@ -733,39 +735,41 @@ mod specification_audit_tests {
       "RC_INSPECTA_00_HLR_14 must reject forwarding a well-formed IPv6 non-ARP frame");
   }
 
-  // ---- F1 demonstration tests (each PASSES, demonstrating the oracle gap) ----
+  // ---- F1 regression tests (the oracle gap must stay closed) ----
 
   #[test]
   #[serial]
-  fn audit_F1a_oracle_accepts_malformed_ipv4_forward_clause_level() {
-    // SPEC WEAKNESS (oracle-level): the HLR_14 clause oracle imposes nothing
-    // on a malformed IPv4 frame — the regrouped antecedent !IPv4 && (...) is
-    // false — so forwarding it is accepted. The GUMBO contract requires NoSend.
+  fn audit_F1a_malformed_ipv4_forward_rejected_clause_level() {
+    // The HLR_14 clause oracle must demand the drop of a malformed IPv4 frame:
+    // the antecedent (!IPv4 && !ARP) | malformed is true for it. (Before the F1
+    // fix the regrouped antecedent !IPv4 && (...) was false, so the oracle
+    // accepted forwarding it.)
     let mal4 = make_frame(true, SW::InternetProtocol::IPV4, SW::FrameProtocol::TCP,
       true, SW::ARP_Type::NA, 50);
-    assert!(GUMBOX::compute_spec_RC_INSPECTA_00_HLR_14_guarantee(Some(mal4), Some(mal4)),
-      "demonstrates F1: HLR_14 oracle accepts forwarding a malformed IPv4 frame");
+    assert!(!GUMBOX::compute_spec_RC_INSPECTA_00_HLR_14_guarantee(Some(mal4), Some(mal4)),
+      "F1: HLR_14 oracle must reject forwarding a malformed IPv4 frame");
   }
 
   #[test]
   #[serial]
-  fn audit_F1b_oracle_accepts_malformed_ipv4_forward_full_post() {
-    // SPEC WEAKNESS (oracle-level): the COMPLETE compute oracle accepts an
-    // execution the Verus-verified implementation can never produce —
-    // forwarding a malformed IPv4 frame in Normal mode. Every GUMBOX-based
-    // test (manual CB + PropTest) inherits this blind spot.
+  fn audit_F1b_malformed_ipv4_forward_rejected_full_post() {
+    // The COMPLETE compute oracle must reject forwarding a malformed IPv4 frame
+    // in Normal mode, an execution the Verus-verified implementation can never
+    // produce. (Before the F1 fix it accepted it, a blind spot every
+    // GUMBOX-based test -- manual CB and PropTest -- inherited.)
     let mal4 = make_frame(true, SW::InternetProtocol::IPV4, SW::FrameProtocol::TCP,
       true, SW::ARP_Type::NA, 50);
-    assert!(GUMBOX::compute_CEP_Post(Some(mal4), NORMAL, Some(mal4), OK),
-      "demonstrates F1: full oracle accepts forwarding a malformed IPv4 frame in Normal mode");
+    assert!(!GUMBOX::compute_CEP_Post(Some(mal4), NORMAL, Some(mal4), OK),
+      "F1: full oracle must reject forwarding a malformed IPv4 frame in Normal mode");
   }
 
   #[test]
   #[serial]
   fn audit_F1c_contrast_malformed_ipv6_arp_still_rejected() {
-    // Contrast probe: for a malformed IPv6 ARP frame the regrouped antecedent
-    // is still true, so the oracle correctly demands the drop — the divergence
-    // is exactly the isIPV4 conjunct's lost grouping.
+    // Contrast probe: for a malformed IPv6 ARP frame the oracle demands the
+    // drop -- it did so even before the F1 fix, whose regrouped antecedent was
+    // still true here; the divergence was exactly the isIPV4 conjunct's lost
+    // grouping.
     let mal6arp = make_frame(true, SW::InternetProtocol::IPV6, SW::FrameProtocol::ARP,
       true, SW::ARP_Type::REQUEST, 50);
     assert!(!GUMBOX::compute_spec_RC_INSPECTA_00_HLR_14_guarantee(Some(mal6arp), Some(mal6arp)),
