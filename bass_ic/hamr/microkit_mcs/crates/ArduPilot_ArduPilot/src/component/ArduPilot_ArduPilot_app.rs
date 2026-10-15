@@ -39,8 +39,8 @@ verus! {
       // the RxFirewall by sending it back out through the TxFirewall.
       //
       // put_EthernetFramesTx requires TxOut_IPv4OrARP (the frame is IPv4 or ARP).
-      // That follows from RxIn_NoBlockedFrames, which get_EthernetFramesRx ensures:
-      // a received frame is not one the RxFirewall must drop, so it is not IPv6.
+      // That follows from OnlyPermittedFrames, which get_EthernetFramesRx ensures:
+      // a received frame is an IPv4 TCP frame.
       if let Some(frame) = api.get_EthernetFramesRx() {
         api.put_EthernetFramesTx(frame);
       }

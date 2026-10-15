@@ -33,12 +33,6 @@ package GumboLib {
             def rxShouldPass(v: SW::StructuredEthernetMessage_i): Base_Types::Boolean :=
                 (not isMalformedFrame(v)) & isIPV4(v) & isTCP(v) & isPortWhitelisted(v);
 
-            // Frames the RxFirewall must drop: the disjunction of the conditions of
-            // RC_INSPECTA_00_HLR_2, HLR_4, HLR_6 and HLR_8.
-            def rxShouldDrop(v: SW::StructuredEthernetMessage_i): Base_Types::Boolean :=
-                isMalformedFrame(v) | isIPV6(v) | isARP(v) |
-                (isIPV4(v) & isTCP(v) & (not isPortWhitelisted(v)));
-
             // Frames ArduPilot's network stack emits: IPv4 or ARP, never IPv6.
             def txExpected(v: SW::StructuredEthernetMessage_i): Base_Types::Boolean :=
                 isIPV4(v) | isARP(v);

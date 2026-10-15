@@ -15,7 +15,7 @@ Status: `make verus` succeeds for every crate, including the system-verification
 **Contents**
 
 - [What was added](#what-was-added)
-  - [1. Library predicates (`GumboLib.sysml` L32–L44)](#1-library-predicates-gumbolibsysml-l32l44)
+  - [1. Library predicates (`GumboLib.sysml` L30–L38)](#1-library-predicates-gumbolibsysml-l30l38)
   - [2. Integration constraints](#2-integration-constraints)
   - [3. A composition, for the connection checks (`SW.sysml` L461–L477)](#3-a-composition-for-the-connection-checks-swsysml-l461l477)
 - [ArduPilot behavior](#ardupilot-behavior)
@@ -24,7 +24,7 @@ Status: `make verus` succeeds for every crate, including the system-verification
 
 ## What was added
 
-### 1. Library predicates ([`GumboLib.sysml` L32–L44](sysml/GumboLib.sysml#L32-L44))
+### 1. Library predicates ([`GumboLib.sysml` L30–L38](sysml/GumboLib.sysml#L30-L38))
 
 These are the frame properties that BASS's existing compute contracts already encode, stated as
 reusable GUMBO functions:
@@ -32,7 +32,6 @@ reusable GUMBO functions:
 | Predicate | Meaning | Derived from |
 |:--|:--|:--|
 | `rxShouldPass(v)` | not malformed **and** IPv4 **and** TCP **and** whitelisted port | the condition of RC_INSPECTA_00_HLR_9 (minus the mode) |
-| `rxShouldDrop(v)` | malformed **or** IPv6 **or** ARP **or** (IPv4 TCP on a non-whitelisted port) | the disjunction of HLR_2, HLR_4, HLR_6 and HLR_8 |
 | `txExpected(v)` | IPv4 **or** ARP | an assumption about ArduPilot's network stack (never IPv6) |
 
 ### 2. Integration constraints
@@ -44,13 +43,15 @@ contract HAMR generates from it.
 | Connection | GUMBO clause | Generated Verus contract |
 |:--|:--|:--|
 | RxFirewall → ArduPilot | RxFirewall **guarantee** `RxOut_OnlyPermitted`: `rxShouldPass(EthernetFramesRxOut)` — [`SW.sysml` L108–L109](sysml/SW.sysml#L108-L109) | `requires` of `put_EthernetFramesRxOut` — [`FirewallRx_FirewallRx_api.rs` L79–L81](hamr/microkit_mcs/crates/FirewallRx_FirewallRx/src/bridge/FirewallRx_FirewallRx_api.rs#L79-L81) |
-| | ArduPilot **assume** `RxIn_NoBlockedFrames`: `not rxShouldDrop(EthernetFramesRx)` — [`SW.sysml` L249–L250](sysml/SW.sysml#L249-L250) | `ensures` of `get_EthernetFramesRx` — [`ArduPilot_ArduPilot_api.rs` L75–L78](hamr/microkit_mcs/crates/ArduPilot_ArduPilot/src/bridge/ArduPilot_ArduPilot_api.rs#L75-L78) |
-| ArduPilot → TxFirewall | ArduPilot **guarantee** `TxOut_IPv4OrARP`: `txExpected(EthernetFramesTx)` — [`SW.sysml` L252–L253](sysml/SW.sysml#L252-L253) | `requires` of `put_EthernetFramesTx` — [`ArduPilot_ArduPilot_api.rs` L57–L59](hamr/microkit_mcs/crates/ArduPilot_ArduPilot/src/bridge/ArduPilot_ArduPilot_api.rs#L57-L59) |
+| | ArduPilot **assume** `OnlyPermittedFrames`: not `isMalformedFrame` **and** `isIPV4` **and** `isTCP` **and** `isPortWhitelisted` (of `EthernetFramesRx`) — [`SW.sysml` L249–L253](sysml/SW.sysml#L249-L253) | `ensures` of `get_EthernetFramesRx` — [`ArduPilot_ArduPilot_api.rs` L76–L80](hamr/microkit_mcs/crates/ArduPilot_ArduPilot/src/bridge/ArduPilot_ArduPilot_api.rs#L76-L80) |
+| ArduPilot → TxFirewall | ArduPilot **guarantee** `TxOut_IPv4OrARP`: `txExpected(EthernetFramesTx)` — [`SW.sysml` L255–L256](sysml/SW.sysml#L255-L256) | `requires` of `put_EthernetFramesTx` — [`ArduPilot_ArduPilot_api.rs` L57–L60](hamr/microkit_mcs/crates/ArduPilot_ArduPilot/src/bridge/ArduPilot_ArduPilot_api.rs#L57-L60) |
 | | TxFirewall **assume** `TxIn_IPv4OrARP`: `txExpected(EthernetFramesTxIn)` — [`SW.sysml` L192–L193](sysml/SW.sysml#L192-L193) | `ensures` of `get_EthernetFramesTxIn` — [`FirewallTx_FirewallTx_api.rs` L117–L120](hamr/microkit_mcs/crates/FirewallTx_FirewallTx/src/bridge/FirewallTx_FirewallTx_api.rs#L117-L120) |
 | TxFirewall → driver | TxFirewall **guarantee** `TxOut_OnlyPermitted`: not malformed and `txExpected(EthernetFramesTxOut)` — [`SW.sysml` L195–L197](sysml/SW.sysml#L195-L197) | `requires` of `put_EthernetFramesTxOut` — [`FirewallTx_FirewallTx_api.rs` L83–L85](hamr/microkit_mcs/crates/FirewallTx_FirewallTx/src/bridge/FirewallTx_FirewallTx_api.rs#L83-L85) |
 
+ArduPilot's assume `OnlyPermittedFrames` is the integration constraint shown in the paper's Figure 6.
+
 The library predicates become Verus `open spec fn`s in the generated `GumboLib` crate:
-[`GumboLib/src/lib.rs` L196–L214](hamr/microkit_mcs/crates/GumboLib/src/lib.rs#L196-L214).
+[`GumboLib/src/lib.rs` L188–L198](hamr/microkit_mcs/crates/GumboLib/src/lib.rs#L188-L198).
 
 How to read the generated contracts:
 
@@ -76,14 +77,12 @@ stating guarantee ⇒ assume over the value the connection carries:
 
 | Connection | Verus VC | Spec functions it uses |
 |:--|:--|:--|
-| RxFirewall → ArduPilot: `rxShouldPass` ⇒ `not rxShouldDrop` | [`vc_integration.rs` L34–L43](hamr/microkit_mcs/crates/sys_nominal_proof/src/vc_integration.rs#L34-L43) | [rx guarantee](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L168-L175), [ap assume](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L19-L26) |
-| ArduPilot → TxFirewall: `txExpected` ⇒ `txExpected` | [`vc_integration.rs` L23–L32](hamr/microkit_mcs/crates/sys_nominal_proof/src/vc_integration.rs#L23-L32) | [ap guarantee](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L28-L35), [tx assume](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L269-L276) |
+| RxFirewall → ArduPilot: `rxShouldPass` ⇒ `OnlyPermittedFrames` | [`vc_integration.rs` L34–L43](hamr/microkit_mcs/crates/sys_nominal_proof/src/vc_integration.rs#L34-L43) | [rx guarantee](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L169-L176), [ap assume](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L19-L27) |
+| ArduPilot → TxFirewall: `txExpected` ⇒ `txExpected` | [`vc_integration.rs` L23–L32](hamr/microkit_mcs/crates/sys_nominal_proof/src/vc_integration.rs#L23-L32) | [ap guarantee](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L29-L36), [tx assume](hamr/microkit_mcs/crates/sys_nominal_proof/src/contracts.rs#L270-L277) |
 
-The RxFirewall → ArduPilot VC is the interesting one. The sender's guarantee is stated as a
-conjunction of what should get through. The receiver's assume is stated as the negation of a
-disjunction of what must not. They are different formulas, and Verus discharges the implication
-from the data-type definitions (an `InternetProtocol` is IPv4 or IPv6; a `FrameProtocol` is TCP
-or ARP). Both VCs verify with an empty proof body.
+In the RxFirewall → ArduPilot VC, the sender's guarantee goes through the library predicate
+`rxShouldPass`, while the receiver's assume spells out the same conjunction inline. Verus
+discharges it by unfolding `rxShouldPass`. Both VCs verify with an empty proof body.
 
 There is no VC for TxFirewall → driver, because the driver declares no integration assume.
 
@@ -101,7 +100,7 @@ if let Some(frame) = api.get_EthernetFramesRx() {
 
 This makes a small proof chained through an integration assume. `put_EthernetFramesTx` requires
 the frame to be IPv4 or ARP (ArduPilot's guarantee). Verus proves that from what
-`get_EthernetFramesRx` ensures: the frame is not one the RxFirewall must drop, so it is not IPv6.
+`get_EthernetFramesRx` ensures: the frame is an IPv4 TCP frame.
 
 ## Testing
 

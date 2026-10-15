@@ -16,13 +16,14 @@ verus! {
 pub mod ap {
   use super::*;
 
-  /** integration assume RxIn_NoBlockedFrames (I-Assm, incoming port EthernetFramesRx)
-    *   ArduPilot never receives a frame the RxFirewall must drop.
+  /** integration assume OnlyPermittedFrames (I-Assm, incoming port EthernetFramesRx)
     */
-  pub open spec fn integration_spec_RxIn_NoBlockedFrames_assume(
+  pub open spec fn integration_spec_OnlyPermittedFrames_assume(
     api_EthernetFramesRx: Option<SW::StructuredEthernetMessage_i>) -> bool
   {
-    (api_EthernetFramesRx.is_some()) ==> (!(GumboLib::rxShouldDrop_spec(api_EthernetFramesRx.unwrap())))
+    (api_EthernetFramesRx.is_some()) ==> (((!(GumboLib::isMalformedFrame_spec(api_EthernetFramesRx.unwrap())) && GumboLib::isIPV4_spec(api_EthernetFramesRx.unwrap())) &&
+      GumboLib::isTCP_spec(api_EthernetFramesRx.unwrap())) &&
+      GumboLib::isPortWhitelisted_spec(api_EthernetFramesRx.unwrap()))
   }
 
   /** integration guarantee TxOut_IPv4OrARP (I-Guar, outgoing port EthernetFramesTx)

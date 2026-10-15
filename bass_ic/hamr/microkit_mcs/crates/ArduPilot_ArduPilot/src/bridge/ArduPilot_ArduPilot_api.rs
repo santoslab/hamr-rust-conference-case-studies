@@ -26,9 +26,10 @@ verus! {
       ensures
         res == value@,
         (res.is_none() ||
-          // assume RxIn_NoBlockedFrames
-          //   ArduPilot never receives a frame the RxFirewall must drop.
-          !(GumboLib::rxShouldDrop_spec(res.unwrap()))),
+          // assume OnlyPermittedFrames
+          ((!(GumboLib::isMalformedFrame_spec(res.unwrap())) && GumboLib::isIPV4_spec(res.unwrap())) &&
+            GumboLib::isTCP_spec(res.unwrap())) &&
+            GumboLib::isPortWhitelisted_spec(res.unwrap())),
     {
       return extern_api::unsafe_get_EthernetFramesRx();
     }
@@ -73,9 +74,10 @@ verus! {
         res == final(self).EthernetFramesRx,
         old(self).EthernetFramesTx == final(self).EthernetFramesTx,
         (res.is_none() ||
-          // assume RxIn_NoBlockedFrames
-          //   ArduPilot never receives a frame the RxFirewall must drop.
-          !(GumboLib::rxShouldDrop_spec(res.unwrap()))),
+          // assume OnlyPermittedFrames
+          ((!(GumboLib::isMalformedFrame_spec(res.unwrap())) && GumboLib::isIPV4_spec(res.unwrap())) &&
+            GumboLib::isTCP_spec(res.unwrap())) &&
+            GumboLib::isPortWhitelisted_spec(res.unwrap())),
     {
       self.api.unverified_get_EthernetFramesRx(&Ghost(self.EthernetFramesRx))
     }/// The number of messages received on EthernetFramesRx that were dropped because they held

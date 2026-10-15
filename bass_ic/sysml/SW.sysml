@@ -246,8 +246,11 @@ package SW {
 
         language "GUMBO" /*{
             integration
-                assume RxIn_NoBlockedFrames "ArduPilot never receives a frame the RxFirewall must drop.":
-                    not GumboLib::GUMBO__Library::rxShouldDrop(EthernetFramesRx);
+                assume OnlyPermittedFrames:
+                    (not GumboLib::GUMBO__Library::isMalformedFrame(EthernetFramesRx)) &
+                    GumboLib::GUMBO__Library::isIPV4(EthernetFramesRx) &
+                    GumboLib::GUMBO__Library::isTCP(EthernetFramesRx) &
+                    GumboLib::GUMBO__Library::isPortWhitelisted(EthernetFramesRx);
 
                 guarantee TxOut_IPv4OrARP "ArduPilot emits only IPv4 or ARP frames.":
                     GumboLib::GUMBO__Library::txExpected(EthernetFramesTx);

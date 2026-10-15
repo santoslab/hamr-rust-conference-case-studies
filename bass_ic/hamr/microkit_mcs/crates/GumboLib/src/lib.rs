@@ -111,14 +111,6 @@ pub fn rxShouldPass(v: SW::StructuredEthernetMessage_i) -> bool
     isPortWhitelisted(v)
 }
 
-pub fn rxShouldDrop(v: SW::StructuredEthernetMessage_i) -> bool
-{
-  isMalformedFrame(v) | isIPV6(v) |
-    isARP(v) |
-    isIPV4(v) & isTCP(v) &
-      !(isPortWhitelisted(v))
-}
-
 pub fn txExpected(v: SW::StructuredEthernetMessage_i) -> bool
 {
   isIPV4(v) | isARP(v)
@@ -198,14 +190,6 @@ verus! {
     ((!(isMalformedFrame_spec(v)) && isIPV4_spec(v)) &&
       isTCP_spec(v)) &&
       isPortWhitelisted_spec(v)
-  }
-
-  pub open spec fn rxShouldDrop_spec(v: SW::StructuredEthernetMessage_i) -> bool
-  {
-    ((isMalformedFrame_spec(v) || isIPV6_spec(v)) ||
-      isARP_spec(v)) ||
-      ((isIPV4_spec(v) && isTCP_spec(v)) &&
-        !(isPortWhitelisted_spec(v)))
   }
 
   pub open spec fn txExpected_spec(v: SW::StructuredEthernetMessage_i) -> bool

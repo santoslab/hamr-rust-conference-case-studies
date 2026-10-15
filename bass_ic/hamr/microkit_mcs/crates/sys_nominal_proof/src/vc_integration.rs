@@ -32,14 +32,14 @@ pub proof fn vc_integration_ap_EthernetFramesTx_to_tx_EthernetFramesTxIn(wire: O
 {}
 
 /** VC[1]: Integration -- connection seL4_i_Instance.FirewallRx.FirewallRx.EthernetFramesRxOut -> seL4_i_Instance.ArduPilot.ArduPilot.EthernetFramesRx: rx.EthernetFramesRxOut's I-Guar `RxOut_OnlyPermitted`
-  * implies ap.EthernetFramesRx's I-Assm `RxIn_NoBlockedFrames`, over
+  * implies ap.EthernetFramesRx's I-Assm `OnlyPermittedFrames`, over
   * the value the connection carries. Discharges when the sender's
   * guarantee is at least as strong as the receiver's assume. */
 pub proof fn vc_integration_rx_EthernetFramesRxOut_to_ap_EthernetFramesRx(wire: Option<SW::StructuredEthernetMessage_i>)
   requires
     rx::integration_spec_RxOut_OnlyPermitted_guarantee(wire),
   ensures
-    ap::integration_spec_RxIn_NoBlockedFrames_assume(wire),
+    ap::integration_spec_OnlyPermittedFrames_assume(wire),
 {}
 
 } // verus!

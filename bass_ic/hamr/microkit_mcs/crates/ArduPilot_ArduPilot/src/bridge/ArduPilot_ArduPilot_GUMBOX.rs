@@ -16,18 +16,18 @@ macro_rules! impliesL {
 
 /** I-Assm: Integration constraint on ArduPilot's incoming event data port EthernetFramesRx
   *
-  * assume RxIn_NoBlockedFrames
-  *   ArduPilot never receives a frame the RxFirewall must drop.
+  * assume OnlyPermittedFrames
   */
 pub fn I_Assm_EthernetFramesRx(EthernetFramesRx: SW::StructuredEthernetMessage_i) -> bool
 {
-  !(GumboLib::rxShouldDrop(EthernetFramesRx))
+  !(GumboLib::isMalformedFrame(EthernetFramesRx)) & GumboLib::isIPV4(EthernetFramesRx) &
+    GumboLib::isTCP(EthernetFramesRx) &
+    GumboLib::isPortWhitelisted(EthernetFramesRx)
 }
 
 /** I-Assm: Integration constraint on ArduPilot's incoming event data port EthernetFramesRx
   *
-  * assume RxIn_NoBlockedFrames
-  *   ArduPilot never receives a frame the RxFirewall must drop.
+  * assume OnlyPermittedFrames
   */
 pub fn I_Assm_Guard_EthernetFramesRx(EthernetFramesRx: Option<SW::StructuredEthernetMessage_i>) -> bool
 {
